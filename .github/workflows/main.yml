@@ -16,11 +16,16 @@ jobs:
     
     
     steps:
-      - name: 'Before'
-        run: ls
 
       - uses: actions/checkout@v3
         
-      - name: 'After'
-        run: ls
+      - name: 'docker login'
+        run: docker login --usernamr ${{ DOCKER_USER }} --password ${{ DOCKER_PASS }} 
+
+      - name: 'building image'
+        run: docker build -t ${{ DOCKER_USER }}/image .
+
+
+      - name : 'pushing'
+        run: docker push ${{ DOCKER_USER }}/image
 
