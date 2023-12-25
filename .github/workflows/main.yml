@@ -16,9 +16,11 @@ jobs:
     
     
     steps:
-      - name: 'testing'
-        run: pwd
+      - name: 'Before'
+        run: ls
+
+      - uses: actions/checkout@v3
         
-      - name: 'printing'
-        run: echo aya
+      - name: 'After'
+        run: ls
 
